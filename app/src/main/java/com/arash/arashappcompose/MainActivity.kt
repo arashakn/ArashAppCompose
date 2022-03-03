@@ -3,21 +3,23 @@ package com.arash.arashappcompose
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.text.BasicText
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import com.arash.arashappcompose.ui.theme.ArashAppComposeTheme
 import com.arash.arashappcompose.ui.theme.Typography
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
@@ -57,6 +59,12 @@ fun CustomText( text : String){
 @Composable
 fun Demo(text : String , onClick : () -> Unit ={} ){
     Column {
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+
+        }
         BasicText(text)
         Button(
             onClick = onClick,
@@ -67,11 +75,4 @@ fun Demo(text : String , onClick : () -> Unit ={} ){
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    ArashAppComposeTheme {
-        CustomText(text = "Arash11")
-    }
-}
 

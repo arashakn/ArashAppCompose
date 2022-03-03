@@ -1,7 +1,6 @@
 package com.arash.arashappcompose
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -24,7 +23,6 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
             when(result){
                 is NetworkResultWrapper.Success -> Log.d("searchresult", "sucess")
                 is NetworkResultWrapper.NetworkError -> Log.d("searchresult", "error")
-                else ->Log.d("searchresult", "else")
             }
         }
     }
