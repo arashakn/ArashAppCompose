@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.arash.arashapp.network.models.Article
 import com.arash.arashapp.network.responsehandler.NetworkResultWrapper
 import com.arash.arashapp.repositories.SearchRepository
+import com.arash.arashappcompose.models.Doc
 import com.arash.arashappcompose.repositories.SearchRepositoryImpl
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -18,11 +19,11 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val repository: SearchRepositoryImpl
 ) : ViewModel(){
     val curVal : MutableLiveData<Int> = MutableLiveData(0)
-    private val _articles = mutableStateOf<List<Article>>(emptyList())
-    val articles: State<List<Article>> = _articles
-    
-    fun setArticles(a: List<Article>) {
-        _articles.value = a
+    private val _docs = mutableStateOf<List<Doc>>(emptyList())
+    val docs: State<List<Doc>> = _docs
+
+    fun setDocs (d: List<Doc> ) {
+        _docs.value = d
     }
     
     init {
@@ -35,7 +36,7 @@ class MainViewModel @Inject constructor(private val repository: SearchRepository
             when(result){
                 is NetworkResultWrapper.Success -> {Log.d("searchresult", "sucess")
                     result.value.response?.let {
-                        setArticles(it.articles)
+                        setDocs(it.docs)
                     }
                 }
                 is NetworkResultWrapper.NetworkError -> Log.d("searchresult", "error")
