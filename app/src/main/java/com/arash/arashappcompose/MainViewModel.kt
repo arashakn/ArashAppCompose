@@ -27,12 +27,12 @@ class MainViewModel @Inject constructor(private val repository: SearchRepository
     }
     
     init {
-        search()
+        search("russia")
     }
 
-    private fun search (){
+    private fun search (query : String){
         viewModelScope.launch {
-            val result = repository.search("russia")
+            val result = repository.search(query = query)
             when(result){
                 is NetworkResultWrapper.Success -> {Log.d("searchresult", "sucess")
                     result.value.response?.let {
